@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<link rel="stylesheet" href="~/css/site.css" />
+<link rel="stylesheet" href="~/css/chessboard-1.0.0.min.css" />
+<link rel="stylesheet" href="~/css/MultiStyle.css" />
+
+
+<div id="chatPlace">
+    <h2>Czat</h2>
+    <input type="text" id="ChatInput" /><br>
+    <button onclick="MessageSent()" class="btn btn-outline-dark bg-dark text-white">Napisz</button><br>
+    <div id="ChatShow">
+    </div>
+</div>
+
+<div id="PlaceToPlay" class="text-white">
+    <div id="MultiBoard" style="width: 600px"></div>
+    <label>Status:</label>
+    <div id="status"></div>
+    <label>FEN:</label>
+    <div id="fen"></div>
+    <label>PGN:</label>
+    <div id="pgn"></div>
+    <button onclick="FlipBoard()" class="btn btn-outline-dark bg-dark text-white">Obróć</button>
+    <button onclick="OfferDraw()" class="btn btn-outline-dark bg-dark text-white">Zaproponuj Remis</button>
+    <button onclick="ResignGame()" class="btn btn-outline-dark bg-dark text-white">Zrezygnuj</button><br><br>
+    <div id="DrawButtons">
+    </div>
+</div>
+
+
+<div id="PlayersSpace" class="text-white">
+    <h3>Gracze</h3>
+    <div id="PlayersList">
+    </div>
+</div>
+
+<div id="FenPlace"></div>
+
+
+
+@section Scripts{
+    <script src="~/js/chess.js"></script>
+    <script src="~/lib/chessboard-js/chessboard-1.0.0.js"></script>
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+    <script src="~/js/ChessPlay.js"></script>
+}

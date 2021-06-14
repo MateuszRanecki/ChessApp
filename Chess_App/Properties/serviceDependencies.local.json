@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "type": "mssql.local",
+      "connectionId": "LoginContextConnection"
+    },
+    "mssql2": {
+      "type": "mssql.local",
+      "connectionId": "ChessContextConnection"
+    },
+    "mssql3": {
+      "type": "mssql.local",
+      "connectionId": "ChessLoginContextConnection"
+    },
+    "mssql4": {
+      "type": "mssql.local",
+      "connectionId": "Chess_AppContextConnection"
+    }
+  }
+}

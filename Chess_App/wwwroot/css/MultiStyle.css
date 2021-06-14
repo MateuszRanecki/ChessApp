@@ -1,0 +1,45 @@
+﻿#PlayersList {
+    height:auto;
+}
+
+#PlayersSpace {
+    width: 25%;
+    padding-left: 200px;
+    padding-top: 20px;
+    float: left;
+    font-weight: bold;
+    height: auto;
+}
+#PlaceToPlay {
+    width: 50%;
+    padding: 20px;
+    float: left;
+    height: auto;
+}
+#ButtonsSpace 
+{
+    float:left;
+}
+#chatPlace {
+    width: 25%;    
+    float: left;
+    height: auto;
+    color:white;
+}
+#ChatInput {
+    width:100%;
+}
+#ChatShow {
+    width: 100%;
+    height: 500px;
+    background-color: dimgrey;
+    border-radius: 5px;
+    overflow: auto;
+}
+#FenPlace {
+    visibility: hidden;
+    float: left;
+    width: 100%;
+    color: white;
+    overflow: auto;
+}

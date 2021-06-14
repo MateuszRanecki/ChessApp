@@ -1,0 +1,34 @@
+﻿body {
+}
+#left
+{
+    width:50%;
+    height:auto;
+    color:white;
+}
+
+#right {
+    width: 50%;
+    height: 100%;
+    color: white;
+    padding-left: 200px;   
+}
+
+#PlaceForGames {
+    width: auto;
+    height: 250px;
+    color: white;
+    overflow: auto;
+    background-color: gray;
+}
+.GameSpans {
+    padding:7px;
+}
+.ReviewButtons {
+    padding-left:45%;
+    padding-top:20px;    
+}
+.PlayDiv {
+    padding-left: 48%;
+    padding-top: 20px;
+}

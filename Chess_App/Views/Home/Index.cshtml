@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<link rel="stylesheet" href="~/css/chessboard-1.0.0.min.css" />
+<link rel="stylesheet" href="~/css/site.css" />
+<link rel="stylesheet" href="~/css/GameStyle.css">
+
+<div id="left">
+    <p>
+        <button class=" btn btn-outline-dark bg-dark text-white " type="button" data-toggle="collapse" data-target="#GameShow" aria-expanded="false" aria-controls="collapseExample">
+            Zagraj
+        </button>
+
+        <button class="btn btn-outline-dark bg-dark text-white" type="button" data-toggle="collapse" data-target="#PositionShow" aria-expanded="false" aria-controls="collapseExample">
+            Pozycja
+        </button>
+
+
+        <button class="btn btn-outline-dark bg-dark text-white" type="button" onclick="SendToHistory()" >
+            Historia gier
+        </button>
+    </p>
+    <div class="collapse" id="GameShow">
+        <div>
+
+            <div id="myBoard" style="width: 600px"></div>
+            <label>Status:</label>
+            <div id="status"></div>
+            <label>FEN:</label>
+            <div id="fen"></div>
+            <label>PGN:</label>
+            <div id="pgn"></div>
+        </div>
+
+    </div>
+
+    <div class="collapse" id="PositionShow">
+        <div>
+            <partial name="SetPosition">
+        </div>
+    </div>   
+
+
+</div>
+
+<div id="middle">
+
+</div>
+
+<div id="right" class="text-white">
+    <h3>
+        Dostepni gracze
+    </h3>
+    <div id="ActivePlayerslist">
+
+    </div>
+
+    <div id="inviteSpace">
+
+    </div>
+</div>
+
+
+
+
+@section Scripts{
+    <script src="~/js/chess.js"></script>
+    <script src="~/lib/chessboard-js/chessboard-1.0.0.js"></script>
+    <script src="~/js/site.js"></script>
+    <script src="~/js/ShowPostion.js"></script>
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+    <script src="~/js/GameChat.js"></script>
+
+}

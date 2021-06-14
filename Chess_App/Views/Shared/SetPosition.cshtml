@@ -1,0 +1,20 @@
+﻿@{
+
+    ViewData["Title"] = "Home Page";
+}
+
+<div id="posBoard" style="width: 600px"></div>
+
+<div class="row">
+    <button id="startBtn">Pozycja Startowa</button>
+    <button id="clearBtn">Wyczyść</button>
+</div>
+@section Scripts
+{
+    <script src="~/js/chess.js"></script>
+    <script src="~/lib/chessboard-js/chessboard-1.0.0.js"></script>    
+    <script src="~/js/ShowPostion.js"></script>
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+    <script src="~/js/GameChat.js"></script>
+
+}
