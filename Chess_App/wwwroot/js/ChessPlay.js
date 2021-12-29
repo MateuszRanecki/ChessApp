@@ -38,7 +38,7 @@ connection.on("canplayermove", function (color) {
     }
 })
 
-connection.on("OverByResign", function (color) {
+connection.on("OverByResign", function (color) {    
     canMove = false;
     var status = ''
     if (color == "w") {
@@ -52,12 +52,12 @@ connection.on("OverByResign", function (color) {
     GetFenFromGame()
 })
 
-function OfferDraw() {
+function OfferDraw() {    
     connection.invoke("SendDrawOffer");
 }
 
 connection.on("ReceiveDrawOffer", function (fromWho)
-{
+{    
     let div = document.createElement('div');
     let span = document.createElement('span');
     let accept = document.createElement('button');
@@ -124,6 +124,7 @@ connection.on("ClearList", function ()
 
 function GetFenFromGame()
 {
+    alert("ok");
     var moves = game.pgn();
     connection.invoke('SaveFenFromGame', FenFromGame, moves);
 }

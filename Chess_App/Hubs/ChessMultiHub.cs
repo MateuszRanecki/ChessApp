@@ -145,8 +145,7 @@ namespace Chess_App.Hubs
                 Opponnent = PlayerTwo.Value,
                 FEN = fen,
                 GameDate=DateTime.Now,
-                MoveSequence=moves
-                
+                MoveSequence=moves                
             };
             _context.GameHistory.Add(game);
             _context.SaveChanges();

@@ -57,6 +57,7 @@ namespace Chess_App
                 endpoints.MapHub<GameHub>("/GameHub");
                 endpoints.MapHub<ChessMultiHub>("/ChessMultiHub");
                 endpoints.MapHub<HistoryHub>("/HistoryHub");
+                endpoints.MapHub<ComputerHub>("/ComputerHub");
             });
 
         }

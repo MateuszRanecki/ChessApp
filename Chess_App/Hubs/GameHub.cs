@@ -12,7 +12,8 @@ namespace Chess_App.Hubs
 {
     [Authorize]
     public class GameHub : Hub
-    {
+    {      
+
         private static Dictionary<string, string> UserList = new Dictionary<string, string>();
         
 

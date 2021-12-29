@@ -49,10 +49,13 @@ connection.on("ReceiveInvite", function (SenderName)
 })
 
 connection.on("SendToRoom", function ()
-{
-    //alert('ok');
+{    
     window.location.href = '/Home/Game';
 })
+
+function PlayWithComputer() {
+    window.location.href = '/Home/Playcomputer';
+}
 
 connection.on("DisconnectPlayer", function (name)
 {

@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<link href="~/css/PlayComputerStyle.css" rel="stylesheet">
+
+<div id="Board">
+    <div id="myBoard" style="width: 400px"></div>
+</div>
+
+<div id="ColorPick">
+    Wybierz kolor:
+
+    <button class=" btn btn-outline-dark bg-dark text-white " type="button" onclick="PlayGame('w')">
+        Białe
+    </button>
+
+    <button class="btn btn-outline-dark bg-dark text-white" type="button" onclick="PlayGame('b')">
+        Czarne
+    </button>
+</div>
+
+
+
+
+
+@section Scripts{
+    <script src="~/js/chess.js"></script>
+    <script src="~/lib/chessboard-js/chessboard-1.0.0.js"></script>
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+    <script src="~/js/playComputer.js"></script>
+}
