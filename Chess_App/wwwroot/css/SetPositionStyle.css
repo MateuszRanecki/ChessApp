@@ -1,0 +1,39 @@
+﻿.setPostion {
+    display: flex;
+}
+.left {
+    width:50%;
+    height: 100%;
+    float: left;   
+    margin-right: 60px;
+}
+
+.right {
+    width: 50%;
+    float: left;
+    height: 100%;
+}
+
+.btn {
+    margin-right: 5px;
+}
+
+#playBoard {
+    visibility: hidden;   
+}
+
+#gameData {
+    visibility: hidden;
+    color: white;
+    font-weight: bold;
+}
+
+#gameOptions {
+    color: white;
+    font-weight:bold;    
+}
+input {
+    margin-right: 10px;
+}
+
+

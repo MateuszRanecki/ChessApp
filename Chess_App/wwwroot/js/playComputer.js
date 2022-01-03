@@ -7,10 +7,9 @@ connection.start();
 
 //SignalR logic
 
-connection.on("connected", function (msg)
-{
-    alert(msg)
-    
+connection.on("ComputerMoved", function (engineMove) {
+    game.move(engineMove)
+    playBoard.position(game.fen()) 
 })
 
 
@@ -25,13 +24,12 @@ function PlayGame(value)
     document.getElementById("ColorPick").style.display = 'none';
     if (value === 'b')
     {
-        board.flip();
-        game.move("e4")
-        board.position(game.fen())
+        playBoard.flip();
+        connection.invoke("ComputerStartsGame");  
     }
 }
 
-var board = null
+var playBoard = null
 var game = new Chess()
 
 function onDragStart(source, piece, position, orientation) {
@@ -39,20 +37,21 @@ function onDragStart(source, piece, position, orientation) {
     if (game.game_over()) return false
 
     // only pick up pieces for White
-    // if (piece.search(/^b/) !== -1) return false
+    if (color !== null)
+    {
+        if (color === "w") {
+            if (piece.search(/^b/) !== -1) return false
+            if (game.turn === "b") return false
+        }
+        else
+        {
+            if (piece.search(/^w/) !== -1) return false
+            if (game.turn === "b") return false
+        }
+    }
+     
 }
 
-function makeRandomMove() {
-    var possibleMoves = game.moves()
-
-    // game over
-    if (possibleMoves.length === 0) return
-
-    var randomIdx = Math.floor(Math.random() * possibleMoves.length)
-    var move = possibleMoves[randomIdx];    
-    game.move(possibleMoves[randomIdx])
-    board.position(game.fen())
-}
 
 function onDrop(source, target) { 
 
@@ -66,22 +65,19 @@ function onDrop(source, target) {
         })
 
         // illegal move
-        if (move === null) return 'snapback' 
+        if (move === null) return 'snapback'         
 
-        //alert(target)
-        
-        // computer makes a move
-        window.setTimeout(makeRandomMove, 250)
+        connection.invoke("PlayerMoved", source, target)      
     }  
 }
 
 // update the board position after the piece snap
 // for castling, en passant, pawn promotion
 function onSnapEnd() {
-    board.position(game.fen())
+    playBoard.position(game.fen())
 }
 
-var config = {
+var playConfig = {
     pieceTheme: '/img/chesspieces/wikipedia/{piece}.png',
     draggable: true,
     position: 'start',
@@ -89,5 +85,5 @@ var config = {
     onDrop: onDrop,
     onSnapEnd: onSnapEnd
 }
-board = Chessboard('myBoard', config)
+playBoard = Chessboard('myBoard', playConfig)
 

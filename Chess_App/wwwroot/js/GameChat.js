@@ -48,15 +48,6 @@ connection.on("ReceiveInvite", function (SenderName)
     elements.InvitePlace.appendChild(div);
 })
 
-connection.on("SendToRoom", function ()
-{    
-    window.location.href = '/Home/Game';
-})
-
-function PlayWithComputer() {
-    window.location.href = '/Home/Playcomputer';
-}
-
 connection.on("DisconnectPlayer", function (name)
 {
     let div = document.getElementById(name);
@@ -69,10 +60,6 @@ connection.on("ClearList", function ()
     node.innerHTML = '';
 })
 
-function SendToHistory()
-{
-    window.location.href = '/Home/CheckGame';
-}
 
 connection.on("ShowPlayedGames", function (opponnent)
 {
@@ -90,6 +77,21 @@ connection.on("ShowPlayedGames", function (opponnent)
     div.append(span, button);
     elements.GameHistory.appendChild(div);
 })
+
+
+function PlayWithComputer() {
+    window.location.href = '/Home/Playcomputer';
+}
+
+function SendToHistory() {
+    window.location.href = '/Home/CheckGame';
+}
+
+function SendToSetting() {
+    
+    window.location.href = '/home/SetPosition';    
+}
+
 
 
     

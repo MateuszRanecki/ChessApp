@@ -8,26 +8,17 @@
 <div id="left">
     <p>
         <button class=" btn btn-outline-dark bg-dark text-white " type="button" onclick="PlayWithComputer()">
-            Zagraj
+            Zagraj z komputerem
         </button>
 
-        <button class="btn btn-outline-dark bg-dark text-white" type="button" data-toggle="collapse" data-target="#PositionShow" aria-expanded="false" aria-controls="collapseExample">
-            Pozycja
+        <button class="btn btn-outline-dark bg-dark text-white" type="button" onclick="SendToSetting()">
+            Ustaw Pozycję
         </button>
-
 
         <button class="btn btn-outline-dark bg-dark text-white" type="button" onclick="SendToHistory()" >
             Historia gier
         </button>
     </p>
-
-    <div class="collapse" id="PositionShow">
-        <div>
-            <partial name="SetPosition">
-        </div>
-    </div>   
-
-
 </div>
 
 <div id="middle">
@@ -52,8 +43,7 @@
 
 @section Scripts{
     <script src="~/js/chess.js"></script>
-    <script src="~/lib/chessboard-js/chessboard-1.0.0.js"></script>
-    <script src="~/js/ShowPostion.js"></script>
+    <script src="~/lib/chessboard-js/chessboard-1.0.0.js"></script>    
     <script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
     <script src="~/js/GameChat.js"></script>
 }

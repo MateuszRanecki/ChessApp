@@ -133,7 +133,7 @@ function GetFenFromGame()
 //Chess Logic
 
 
-var board = null
+var playBoard = null
 var game = new Chess()
 var $status = $('#status')
 var $fen = $('#fen')
@@ -199,7 +199,7 @@ function ChangePLayersMoveOrder() {
 // update the board position after the piece snap
 // for castling, en passant, pawn promotion
 function onSnapEnd() {
-    board.position(game.fen())
+    playBoard.position(game.fen())
 }
 
 function updateStatus() {
@@ -245,7 +245,7 @@ function ShowFen()
 }
 
 function FlipBoard() {
-    board.flip();
+    playBoard.flip();
 }
 
 function ResignGame() {
@@ -268,10 +268,7 @@ function ResignGame() {
 }
 
 
-
-
-
-var config =
+var playConfig =
 {
     pieceTheme: '/img/chesspieces/wikipedia/{piece}.png',
     draggable: true,
@@ -280,7 +277,7 @@ var config =
     onDrop: onDrop,
     onSnapEnd: onSnapEnd
 }
-board = Chessboard('MultiBoard', config)
+playBoard = Chessboard('MultiBoard', playConfig)
 
 
 updateStatus()

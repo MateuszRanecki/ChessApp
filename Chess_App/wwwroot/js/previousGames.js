@@ -36,7 +36,7 @@ connection.on("ShowPlayedGames", function (opponnent,date) {
 
 connection.on("CreateEnvForReview", function ()
 {    
-    board.position("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
+    playBoard.position("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
     elements.ReviewSpace.innerText = '';
     elements.PlayButton.innerText = '';
     let div = document.createElement('div');
@@ -78,7 +78,7 @@ function StartAnalyze()
 
 connection.on("UpdateBoard", function (counter)
 {
-    board.position(counter);
+    playBoard.position(counter);
     game.fen() = counter;
     updateStatus();
 })
@@ -98,7 +98,7 @@ connection.on("OutOfRangeMoves", function (max)
 
 //Chess Logic
 
-var board = null
+var playBoard = null
 var game = new Chess()
 var $status = $('#status')
 var $fen = $('#fen')
@@ -136,7 +136,7 @@ function onDrop(source, target) {
 // update the board position after the piece snap
 // for castling, en passant, pawn promotion
 function onSnapEnd() {
-    board.position(game.fen())
+    playBoard.position(game.fen())
 }
 
 function updateStatus() {
@@ -174,10 +174,10 @@ function updateStatus() {
 
 function FlipBoard()
 {
-    board.flip();
+    playBoard.flip();
 }
 
-var config = {
+var playConfig = {
     draggable: true,
     position: 'start',
     onDragStart: onDragStart,
@@ -185,6 +185,6 @@ var config = {
     onSnapEnd: onSnapEnd,
     pieceTheme: '/img/chesspieces/wikipedia/{piece}.png'
 }
-board = Chessboard('myBoard', config)
+playBoard = Chessboard('myBoard', playConfig)
 
 updateStatus()

@@ -1,7 +1,7 @@
 ﻿// NOTE: this example uses the chess.js library:
 // https://github.com/jhlywa/chess.js
 
-var board = null
+var playBoard = null
 var game = new Chess()
 var $status = $('#status')
 var $fen = $('#fen')
@@ -35,7 +35,7 @@ function onDrop(source, target) {
 // update the board position after the piece snap
 // for castling, en passant, pawn promotion
 function onSnapEnd() {
-    board.position(game.fen())
+    playBoard.position(game.fen())
 }
 
 function updateStatus() {
@@ -71,14 +71,14 @@ function updateStatus() {
     $pgn.html(game.pgn())
 }
 
-var config = {
+var playConfig = {
     draggable: true,
     position: 'start',
     onDragStart: onDragStart,
     onDrop: onDrop,
     onSnapEnd: onSnapEnd
 }
-board = Chessboard('myBoard', config)
+playBoard = Chessboard('myBoard', playConfig)
 
 
 updateStatus()
