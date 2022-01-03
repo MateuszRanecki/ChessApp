@@ -123,8 +123,7 @@ connection.on("ClearList", function ()
 })
 
 function GetFenFromGame()
-{
-    alert("ok");
+{    
     var moves = game.pgn();
     connection.invoke('SaveFenFromGame', FenFromGame, moves);
 }

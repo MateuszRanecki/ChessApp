@@ -25,15 +25,25 @@
 #gameData {
     visibility: hidden;
     color: white;
-    font-weight: bold;
+    font-weight: bold;    
 }
 
 #gameOptions {
     color: white;
-    font-weight:bold;    
+    font-weight: bold;
+    background-color: dimgrey;
+    padding-top:10px;
+    padding-left:10px;
+    margin-bottom:20px;
+    border-radius:5px;
 }
 input {
     margin-right: 10px;
+    margin-top: 5px;
+}
+
+.margin {
+    margin: 10px
 }
 
 

@@ -71,6 +71,7 @@ connection.on("ShowPlayedGames", function (opponnent)
     button.innerText = "Sprawdź";
     button.addEventListener("click", function ()
     {
+        alert("ok");
         window.location.href = '/Home/CheckGame';
     })
     span.innerText = "przeciwko " + opponnent;
@@ -91,6 +92,11 @@ function SendToSetting() {
     
     window.location.href = '/home/SetPosition';    
 }
+
+connection.on("SendToRoom", function ()
+{
+    window.location.href = '/Home/Game';
+})
 
 
 

@@ -6,45 +6,70 @@
 
 <div class="setPostion">
 
-<div class="left">
-    <div id="posBoard"></div>
-    <div id="playBoard" ></div>
-</div>
-
-<div class="right">    
-     
-    <div id="gameOptions">
-        <div class="row">
-            <input type="checkbox" id="white-castle" name="white-castle">
-            <label for="white-castle">Roszada białych</label>
-            <input type="checkbox" id="white-long-castle" name="white-long-castle">
-            <label for="white-long-castle">Roszada długa białych</label>
+    <div class="left">
+        <div id="posBoard"></div>
+        <div id="playBoard" ></div>
+    </div>
+    
+    <div class="right">    
+         
+        <div id="gameOptions">
+            <div class="row margin">
+                <div class="col-sm">
+                    <input type="checkbox" id="white-castle" name="white-castle">
+                    <label for="white-castle">Roszada białych</label>
+                </div>
+                <div class="col-sm">
+                    <input type="checkbox" id="white-long-castle" name="white-long-castle">
+                    <label for="white-long-castle">Roszada długa białych</label>
+                </div>  
+            </div>
+    
+            <div class="row margin">
+                <div class="col-sm">
+                    <input type="checkbox" id="black-castle" name="black-castle">
+                    <label for="white-castle">Roszada czarnych</label>
+                </div>             
+                <div class="col-sm">
+                    <input type="checkbox" id="black-long-castle" name="black-long-castle">
+                    <label for="white-long-castle">Roszada długa czarnych</label>
+                </div>  
+            </div>
+            
+            <div class="row margin">
+                <div class="col-sm">
+                    <label for="colors">Wybierz Kolor:</label>
+                    <select id="colors">
+                        <option value="white" selected>Białe</option>
+                        <option value="Black">Czarne</option>
+                    </select>
+                </div>
+                <div class="col-sm">
+                    <label for="howToPlay">Zagraj:</label>
+                    <select id="howToPlay">
+                        <option value="alone" selected>Samemu</option>
+                        <option value="computer">Z komputerem</option>
+                    </select>
+                </div>
+            </div>    
+            
         </div>
-
-        <div class="row">
-            <input type="checkbox" id="black-castle" name="black-castle">
-            <label for="white-castle">Roszada czarnych</label>
-            <input type="checkbox" id="black-long-castle" name="black-long-castle">
-            <label for="white-long-castle">Roszada długa czarnych</label>
+    
+        <div id="buttons">
+             <button id="startBtn" class=" btn btn-outline-dark bg-secondary text-white margin-right">Pozycja Startowa </button>
+             <button id="clearBtn" class=" btn btn-outline-dark bg-secondary text-white" margin-right>Wyczyść </button>
+             <button class=" btn btn-outline-dark bg-dark text-white margin-right" onclick="PlayPosition()">Zagraj z tej pozycji </button>    
+        </div>
+    
+        <div id="gameData">
+            <label>Status:</label>
+            <div id="status"></div>
+            <label>FEN:</label>
+            <div id="fen"></div>
+            <label>PGN:</label>
+            <div id="pgn"></div>
         </div>
     </div>
-
-    <div id="buttons">
-         <button id="startBtn" class=" btn btn-outline-dark bg-dark text-white margin-right">Pozycja Startowa </button>
-         <button id="clearBtn" class=" btn btn-outline-dark bg-dark text-white" margin-right>Wyczyść </button>
-         <button class=" btn btn-outline-dark bg-dark text-white margin-right" onclick="PlayPosition()">Zagraj z tej pozycji </button>    
-    </div>
-
-    <div id="gameData">
-        <label>Status:</label>
-        <div id="status"></div>
-        <label>FEN:</label>
-        <div id="fen"></div>
-        <label>PGN:</label>
-        <div id="pgn"></div>
-    </div>
-</div>
-
 </div>
 
 

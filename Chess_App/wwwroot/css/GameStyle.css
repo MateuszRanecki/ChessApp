@@ -3,24 +3,17 @@
     background-size: cover;
 }
 
-#middle {
-    width: 50%;
-    float: left;
-    height: 75%;
-    font-weight: bold;
-    padding: 200px;
-    color: white;
-}
 #left {
-    width: 25%;
+    width: 50%;
     float: left;
     height: 75%;
     color:white;
 }
 #right {
-    width: 25%;
+    width: 50%;
     float: left;
     height: 75%;
+    padding-left:15%;
 }
 
 #ActivePlayerslist {
