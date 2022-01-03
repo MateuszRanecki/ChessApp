@@ -9,7 +9,7 @@ var setBoard = Chessboard('posBoard', {
 $('#startBtn').on('click', setBoard.start)
 $('#clearBtn').on('click', setBoard.clear)
 
-var value;
+var boardValue;
 
 function PlayPosition()
 {   
@@ -18,21 +18,111 @@ function PlayPosition()
     var gameDataElement = document.getElementById("gameData")
     var gameOptionsElement = document.getElementById("gameOptions")
 
-    value = setBoard.fen()
-    var setFEN = value.concat(" w - - 0 1");
-    game = new Chess(setFEN)   
+    var whiteCastle = document.getElementById("white-castle").checked
+    var blackCastle = document.getElementById("black-castle").checked
+    var whiteLongCastle = document.getElementById("white-long-castle").checked
+    var blackLongCastle = document.getElementById("white-long-castle").checked 
+
+    var colorChoice = document.getElementById("colors").value   
+    boardValue = setBoard.fen()
+    var boardPosition = setBoard.position()
+
+    var castling = SetCastlingRights(boardPosition, whiteCastle, blackCastle, whiteLongCastle, blackLongCastle)
+
+    var finalFEN = SetFinalPosition(colorChoice, castling, boardValue)  
+
+    game = new Chess(finalFEN)   
     playBoard.position(game.fen())
     updateStatus()         
-
+   
     gameOptionsElement.remove()
     buttonsElement.remove()
     setBoard.destroy();   
-
+   
     playingBoardElement.style.visibility = "visible"
-    gameDataElement.style.visibility = "visible"
-    
-   // var pieces = playBoard.position();
-   // console.log(pieces["g8"])
+    gameDataElement.style.visibility = "visible"    
+
+}
+
+function SetFinalPosition(color, castling,board)
+{
+    var moveOrder;
+    var castleHelper = "-"    
+    var result;
+
+    if (color == "white") moveOrder = "w"
+    else moveOrder = "b"
+
+    if (castling !== "")
+    {
+        castleHelper = castling
+    }
+
+    result = board.concat(" ", moveOrder, " ", castleHelper, " - 0 1")
+
+    return result
+}
+
+function SetCastlingRights(board, whiteCastleChecker, blackCastleChecker,whiteLongCastleChecker,blackLongCastleChecker)
+{
+    var canWhiteCastle;
+    var canBlackCastle;
+    var canWhiteLongCastle;
+    var canBlackLongCastle;
+    var helper = "";
+    var result="";   
+
+    if (whiteCastleChecker)
+    {
+        canWhiteCastle = CheckWhiteCastle(board)
+        if (canWhiteCastle != null) result += canWhiteCastle
+    }
+
+    if (whiteLongCastleChecker) {
+        canWhiteLongCastle = CheckWhiteLongCastle(board)
+        if (canWhiteLongCastle !== null) result += canWhiteLongCastle
+    }
+
+    if (blackCastleChecker) {
+        canBlackCastle = CheckBlackCastle(board)
+        if (canBlackCastle !== null) result += canBlackCastle
+    }
+
+    if (blackLongCastleChecker) {
+        canBlackLongCastle = CheckBlackLongCastle(board)
+        if (canBlackLongCastle !== null) result += canBlackLongCastle
+    }  
+
+    return result
+}
+
+function CheckWhiteCastle(board)
+{ 
+    if (board["e1"] === "wK" && board["h1"] === "wR") {        
+        return "K"
+    }
+    else return null
+}
+
+function CheckBlackCastle(board) {    
+    if (board["e8"] === "bK" && board["h8"] === "bR") {
+        return "k"
+    }
+    else return null
+}
+
+function CheckWhiteLongCastle(board) {    
+    if (board["e1"] === "wK" && board["a1"] === "wR") {
+        return "Q"
+    }
+    else return null
+}
+
+function CheckBlackLongCastle(board) {    
+    if (board["e8"] === "bK" && board["a8"] === "bR") {
+        return "q"
+    }
+    else return null
 }
 
 
