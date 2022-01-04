@@ -8,11 +8,11 @@
 
     <div class="left">
         <div id="posBoard"></div>
-        <div id="playBoard" ></div>
+        <div id="playBoard"></div>
     </div>
-    
-    <div class="right">    
-         
+
+    <div class="right">
+
         <div id="gameOptions">
             <div class="row margin">
                 <div class="col-sm">
@@ -22,45 +22,61 @@
                 <div class="col-sm">
                     <input type="checkbox" id="white-long-castle" name="white-long-castle">
                     <label for="white-long-castle">Roszada długa białych</label>
-                </div>  
+                </div>
             </div>
-    
+
             <div class="row margin">
                 <div class="col-sm">
                     <input type="checkbox" id="black-castle" name="black-castle">
                     <label for="white-castle">Roszada czarnych</label>
-                </div>             
+                </div>
                 <div class="col-sm">
                     <input type="checkbox" id="black-long-castle" name="black-long-castle">
                     <label for="white-long-castle">Roszada długa czarnych</label>
-                </div>  
+                </div>
             </div>
-            
+
             <div class="row margin">
                 <div class="col-sm">
-                    <label for="colors">Wybierz Kolor:</label>
+                    <label for="colors">Ruch:</label>
                     <select id="colors">
-                        <option value="white" selected>Białe</option>
-                        <option value="Black">Czarne</option>
+                        <option value="white" selected>Białych</option>
+                        <option value="black">Czarnych</option>
                     </select>
                 </div>
                 <div class="col-sm">
                     <label for="howToPlay">Zagraj:</label>
-                    <select id="howToPlay">
+                    <select id="howToPlay" onchange="ShowOptions()">
                         <option value="alone" selected>Samemu</option>
                         <option value="computer">Z komputerem</option>
                     </select>
                 </div>
-            </div>    
-            
+            </div>
+            <div class="row margin hidden" id="hidden_row">
+                <div class="col-sm">
+                    <label for="level">Poziom trudności:</label>
+                    <select id="level">
+                        <option value="easy">Łatwy</option>
+                        <option value="medium" selected>Średni</option>
+                        <option value="hard">Trudny</option>
+                        <option value="veryHard">Bardzo trudny</option>
+                    </select>
+                </div>
+                <div class="col-sm">
+                    <label for="playerColor">Twój kolor:</label>
+                    <select id="playerColor">
+                        <option value="white" selected>Białe</option>
+                        <option value="black">Czarne</option>
+                    </select>
+                </div>
+            </div>
+            <div id="buttons">
+                <button id="startBtn" class=" btn btn-outline-dark bg-secondary text-white margin-right">Pozycja Startowa </button>
+                <button id="clearBtn" class=" btn btn-outline-dark bg-secondary text-white" margin-right>Wyczyść </button>
+                <button class=" btn btn-outline-dark bg-dark text-white margin-right" onclick="PlayPosition()">Zagraj z tej pozycji </button>
+            </div>
+
         </div>
-    
-        <div id="buttons">
-             <button id="startBtn" class=" btn btn-outline-dark bg-secondary text-white margin-right">Pozycja Startowa </button>
-             <button id="clearBtn" class=" btn btn-outline-dark bg-secondary text-white" margin-right>Wyczyść </button>
-             <button class=" btn btn-outline-dark bg-dark text-white margin-right" onclick="PlayPosition()">Zagraj z tej pozycji </button>    
-        </div>
-    
         <div id="gameData">
             <label>Status:</label>
             <div id="status"></div>
@@ -70,12 +86,11 @@
             <div id="pgn"></div>
         </div>
     </div>
-</div>
 
 
 @section Scripts {
     <script src="~/js/chess.js"></script>
     <script src="~/lib/chessboard-js/chessboard-1.0.0.js"></script>
-    <script src="~/js/ShowPostion.js"></script>
     <script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+    <script src="~/js/ShowPostion.js"></script>
 }

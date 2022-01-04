@@ -1,7 +1,15 @@
 ﻿#ColorPick{
     color:white;
+    background-color: dimgrey;
+    border-radius: 5px;
+    max-width: 600px;
+    padding: 25px;
 }
 
 #Board {
-    display:none;
+    display: none;
+}
+
+.margin-left {
+    margin-left: 15px !important;
 }

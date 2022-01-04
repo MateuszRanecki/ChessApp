@@ -10,15 +10,29 @@
 </div>
 
 <div id="ColorPick">
-    Wybierz kolor:
 
-    <button class=" btn btn-outline-dark bg-dark text-white " type="button" onclick="PlayGame('w')">
-        Białe
-    </button>
+    <div class="row">
+        <div class="col-sm">
+            <label for="level">Poziom trudności:</label>
+            <select id="level">
+                <option value="easy">Łatwy</option>
+                <option value="medium" selected>Średni</option>
+                <option value="hard">Trudny</option>
+                <option value="veryHard">Bardzo trudny</option>
+            </select>
+        </div>
+        <div class="col-sm">
+            <label for="playerColor">Twój kolor:</label>
+            <select id="playerColor">
+                <option value="white" selected>Białe</option>
+                <option value="black">Czarne</option>
+            </select>
+        </div>
+    </div>
 
-    <button class="btn btn-outline-dark bg-dark text-white" type="button" onclick="PlayGame('b')">
-        Czarne
-    </button>
+    <div class="row">
+        <button class=" btn btn-outline-dark bg-dark text-white margin-left" onclick="PlayGame()">Zagraj</button>
+    </div>
 </div>
 
 

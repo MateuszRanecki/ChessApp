@@ -1,4 +1,26 @@
-﻿
+﻿var connection = new signalR.HubConnectionBuilder().withUrl("/SetPositionHub").build();
+
+connection.start();
+
+//signalr logic
+
+connection.on("ComputerStarts", function (move) {
+    game.move(move);
+    playBoard.position(game.fen())
+    updateStatus()
+})
+
+function ShowOptions()
+{
+    var option = document.getElementById("howToPlay").value  
+    var row = document.getElementById("hidden_row")
+
+    if (option == "computer") row.style.visibility = "visible"
+    else row.style.visibility="hidden"
+}
+
+//chess logic
+
 var setBoard = Chessboard('posBoard', {
     pieceTheme: '/img/chesspieces/wikipedia/{piece}.png',
     draggable: true,
@@ -24,6 +46,10 @@ function PlayPosition()
     var blackLongCastle = document.getElementById("white-long-castle").checked 
 
     var colorChoice = document.getElementById("colors").value   
+    var playComputer = document.getElementById("howToPlay").value
+    var difficulty = document.getElementById("level").value
+    var playerColor = document.getElementById("playerColor").value   
+
     boardValue = setBoard.fen()
     var boardPosition = setBoard.position()
 
@@ -33,7 +59,10 @@ function PlayPosition()
 
     game = new Chess(finalFEN)   
     playBoard.position(game.fen())
-    updateStatus()         
+    updateStatus() 
+  
+    if (playComputer == "computer") connection.invoke("PlayWithComputer", finalFEN, difficulty, playerColor)    
+    
    
     gameOptionsElement.remove()
     buttonsElement.remove()
@@ -156,6 +185,8 @@ function onDrop(source, target) {
     if (move === null) return 'snapback'
 
     updateStatus()
+
+    connection.invoke("MakeHumanMove", source, target)
 }
 
 // update the board position after the piece snap

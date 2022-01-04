@@ -37,10 +37,32 @@ namespace Chess_App.Hubs
         }
         
 
-        public async Task ComputerStartsGame() 
-        {            
-            _engine.HumanPlayer = ChessPieceColor.Black;
-            await MakeComputerMove();           
+        public async Task ComputerStartsGame(string diff, string color) 
+        {
+            switch (diff)
+            {
+                case "easy":
+                    _engine.GameDifficulty = Engine.Difficulty.Easy;
+                    break;
+                case "hard":
+                    _engine.GameDifficulty = Engine.Difficulty.Hard;
+                    break;
+                case "veryHard":
+                    _engine.GameDifficulty = Engine.Difficulty.VeryHard;
+                    break;
+                default:
+                    _engine.GameDifficulty = Engine.Difficulty.Medium;
+                    break;
+            }
+
+            if (color == "white")
+                _engine.HumanPlayer = ChessPieceColor.White;
+            else 
+            {
+                _engine.HumanPlayer = ChessPieceColor.Black;
+                await Clients.Caller.SendAsync("Flip");
+                await MakeComputerMove();
+            }             
         }
 
         async public Task MakeComputerMove() 

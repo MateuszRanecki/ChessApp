@@ -26,14 +26,16 @@
     visibility: hidden;
     color: white;
     font-weight: bold;    
+    background-color:dimgrey;
+    border-radius:5px;
+    margin: 20px
 }
 
 #gameOptions {
     color: white;
     font-weight: bold;
     background-color: dimgrey;
-    padding-top:10px;
-    padding-left:10px;
+    padding:10px;
     margin-bottom:20px;
     border-radius:5px;
 }
@@ -44,6 +46,10 @@ input {
 
 .margin {
     margin: 10px
+}
+
+.hidden {
+    visibility: hidden;
 }
 
 

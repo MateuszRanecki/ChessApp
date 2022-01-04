@@ -12,21 +12,23 @@ connection.on("ComputerMoved", function (engineMove) {
     playBoard.position(game.fen()) 
 })
 
+connection.on("Flip", function () {
+    playBoard.flip();
+})
 
-
-//chess logic
 var color;
 
-function PlayGame(value)
-{    
-    color = value;
-    document.getElementById("Board").style.display = 'block';
-    document.getElementById("ColorPick").style.display = 'none';
-    if (value === 'b')
-    {
-        playBoard.flip();
-        connection.invoke("ComputerStartsGame");  
-    }
+function PlayGame()
+{
+    var diff = document.getElementById("level").value
+    var colorValue = document.getElementById("playerColor").value;
+
+    if (colorValue == "white") color = "w"
+    else color="b"
+
+    document.getElementById("Board").style.display = 'block'
+    document.getElementById("ColorPick").style.display = 'none'
+    connection.invoke("ComputerStartsGame", diff, colorValue);     
 }
 
 var playBoard = null
