@@ -93,6 +93,11 @@ function SendToSetting() {
     window.location.href = '/home/SetPosition';    
 }
 
+function SendToTutorial() {
+
+    window.location.href = '/home/Tutorial';
+}
+
 connection.on("SendToRoom", function ()
 {
     window.location.href = '/Home/Game';

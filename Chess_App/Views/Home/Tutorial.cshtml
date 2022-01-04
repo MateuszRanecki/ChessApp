@@ -1,0 +1,62 @@
+﻿<link rel="stylesheet" href="~/css/Tutorial.css">
+
+
+<div id="left">
+    <div id="myBoard" style="width: 400px"></div>
+</div>
+
+<div id="right">
+    <div id="description">
+      <h2 id="header"> Omówienie zasad gry w szachy</h2>
+        <p id="topic">Witaj chciałbym wytłumaczyć zasady gry w szachy 
+        za pomocą przedstawionych tu przykładów.
+        Aby zacząć naciśnij któryś z przycisków</p>
+    </div>
+</div>
+
+<div id="ButtonsSpace">
+    <button class=" btn btn-outline-dark bg-dark text-white special-button" onclick="ShowMoves()">Poruszanie sie bierek </button>
+    <div class="moveButtons" id="moveButtons">
+        <button class=" btn btn-outline-dark bg-dark text-white margin-buttons" onclick="Pawn()">Pion </button>
+        <button class=" btn btn-outline-dark bg-dark text-white margin-buttons" onclick="Knight()">Skoczek </button>
+        <button class=" btn btn-outline-dark bg-dark text-white margin-buttons" onclick="Bishop()">Goniec </button>
+        <button class=" btn btn-outline-dark bg-dark text-white margin-buttons" onclick="Rook()">Wieża </button>
+        <button class=" btn btn-outline-dark bg-dark text-white margin-buttons" onclick="Queen()">Hetman </button>
+        <button class=" btn btn-outline-dark bg-dark text-white margin-buttons" onclick="King()">Król </button>
+    </div>
+
+    <button class=" btn btn-outline-dark bg-dark text-white special-button" onclick="ShowRules()">Zasady gry </button>
+    <div class="moveButtons" id="rulesButtons">
+        <button class=" btn btn-outline-dark bg-dark text-white margin-buttons" onclick="Squares()"> Opis szachownicy </button>
+        <button class=" btn btn-outline-dark bg-dark text-white margin-buttons" onclick="Take()">Zbijanie figur </button>
+        <button class=" btn btn-outline-dark bg-dark text-white margin-buttons" onclick="Check()">Szach </button>
+        <button class=" btn btn-outline-dark bg-dark text-white margin-buttons" onclick="CheckMate()">Szach mat </button>
+    </div>
+
+    <button class=" btn btn-outline-dark bg-dark text-white special-button" onclick="SpecialMoves()">Ruchy Specjalne </button>
+    <div class="moveButtons" id="SpecialMoveButtons">
+        <button class=" btn btn-outline-dark bg-dark text-white margin-buttons" onclick="EnPassant()">Bicie w Przelocie </button>
+        <button class=" btn btn-outline-dark bg-dark text-white margin-buttons" onclick="Castle()">Roszada  </button>
+        <button class=" btn btn-outline-dark bg-dark text-white margin-buttons" onclick="Promotion()">Promocja piona </button>
+    </div>
+
+    <button class=" btn btn-outline-dark bg-dark text-white special-button" onclick="DrawOptions()">Możliwości remisu  </button>
+    <div class="moveButtons" id="drawButtons">
+        <button class=" btn btn-outline-dark bg-dark text-white margin-buttons" onclick="Stalemate()">Pat </button>
+        <button class=" btn btn-outline-dark bg-dark text-white margin-buttons" onclick="Material()">Brak bierek do mata </button>
+        <button class=" btn btn-outline-dark bg-dark text-white margin-buttons" onclick="Repetition()">Powtórzenie pozycji </button>
+        <button class=" btn btn-outline-dark bg-dark text-white margin-buttons" onclick="FiftyMove()">Zasada 50 ruchów </button>
+    </div>
+
+</div>
+
+
+
+
+@section Scripts
+{
+    <script src="~/js/chess.js"></script>
+    <script src="~/lib/chessboard-js/chessboard-1.0.0.js"></script>
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+    <script src="~/js/Tutorial.js"></script>
+}

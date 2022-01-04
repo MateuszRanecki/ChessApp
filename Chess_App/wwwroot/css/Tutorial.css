@@ -1,0 +1,35 @@
+﻿#moves {
+    display:block;
+}
+
+.moveButtons {
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    width: 170px;
+}
+
+.margin-buttons
+{
+    margin: 10px 0;
+    padding: 3px 0;   
+}
+#ButtonsSpace {
+    display: flex;
+    width: 100%;
+    float: left;
+    margin-top: 30px;
+}
+.special-button {
+    height: 60px;
+    margin: 10px 10px;
+    padding: 3px 10px;
+}
+
+#description {
+    color:white;
+    background-color:dimgrey;
+    border-radius:5px;
+    max-width:300px;
+    text-align:center;
+}
