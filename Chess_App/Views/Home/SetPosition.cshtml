@@ -8,6 +8,11 @@
 
     <div class="left">
         <div id="posBoard"></div>
+        <div id="LoadFromFEN">
+            <input type="text" id="insertFen">
+            <button class=" btn btn-outline-dark bg-secondary text-white margin-right" onclick="LoadFen()">Załaduj FEN </button>
+        </div>
+        
         <div id="playBoard"></div>
     </div>
 
@@ -87,10 +92,11 @@
         </div>
     </div>
 
+</div>
 
 @section Scripts {
     <script src="~/js/chess.js"></script>
     <script src="~/lib/chessboard-js/chessboard-1.0.0.js"></script>
     <script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
-    <script src="~/js/ShowPostion.js"></script>
+    <script src="~/js/SetPositionScripts.js"></script>
 }

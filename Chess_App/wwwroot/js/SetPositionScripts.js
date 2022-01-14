@@ -39,6 +39,7 @@ function PlayPosition()
     var buttonsElement = document.getElementById("buttons")
     var gameDataElement = document.getElementById("gameData")
     var gameOptionsElement = document.getElementById("gameOptions")
+    var fenLoaderELement = document.getElementById("LoadFromFEN")
 
     var whiteCastle = document.getElementById("white-castle").checked
     var blackCastle = document.getElementById("black-castle").checked
@@ -61,19 +62,21 @@ function PlayPosition()
     playBoard.position(game.fen())
     updateStatus() 
   
-    if (playComputer == "computer") connection.invoke("PlayWithComputer", finalFEN, difficulty, playerColor)    
+    if (playComputer == "computer") connection.invoke("PlayWithComputer", finalFEN, difficulty, playerColor)
+    else connection.invoke("PlayAlone", finalFEN)
     
    
     gameOptionsElement.remove()
     buttonsElement.remove()
-    setBoard.destroy();   
+    setBoard.destroy();
+    fenLoaderELement.remove();
    
     playingBoardElement.style.visibility = "visible"
     gameDataElement.style.visibility = "visible"    
 
 }
 
-function SetFinalPosition(color, castling,board)
+function SetFinalPosition(color, castling, board)
 {
     var moveOrder;
     var castleHelper = "-"    
@@ -154,6 +157,21 @@ function CheckBlackLongCastle(board) {
     else return null
 }
 
+function LoadFen()
+{
+    var FEN = document.getElementById("insertFen").value
+    connection.invoke("ValidateFEN", FEN)
+}
+
+connection.on("WrongFEN", function ()
+{
+    alert("Błędny FEN")
+})
+
+connection.on("SetBoardFromFEN", function(FEN)
+{
+     setBoard.position(FEN)    
+})
 
 
 var playBoard = null

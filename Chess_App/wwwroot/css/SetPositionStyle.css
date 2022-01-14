@@ -52,4 +52,11 @@ input {
     visibility: hidden;
 }
 
+#insertFen {
+    width: 100%;
+    border: none;
+    outline: 0;
+    color: white;
+    background-color: dimgrey;
+}
 

@@ -11,7 +11,7 @@ using Chess_App.Data;
 namespace Chess_App.Hubs
 {
     [Authorize]
-    public class GameHub : Hub
+    public class IndexHub : Hub
     {      
 
         private static Dictionary<string, string> UserList = new Dictionary<string, string>();
@@ -24,7 +24,7 @@ namespace Chess_App.Hubs
             await Clients.All.SendAsync("ReceiveMessage", user, message);
         }
 
-        public GameHub(Chess_AppContext context)
+        public IndexHub(Chess_AppContext context)
         {
             _context = context;
         }

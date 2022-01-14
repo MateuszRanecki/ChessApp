@@ -17,7 +17,7 @@ namespace Chess_App.Hubs
         private readonly MoveParser _moveParser = new MoveParser();
         public override async Task OnConnectedAsync()
         {
-         
+            
         }
 
         public async Task PlayWithComputer(string FEN, string difficulty, string playerColor) 
@@ -63,6 +63,23 @@ namespace Chess_App.Hubs
             _engine.AiPonderMove();
             lastMove = _engine.LastMove.PgnMove;
             await Clients.Caller.SendAsync("ComputerStarts", lastMove);
+        }
+
+        public async Task PlayAlone(string FEN) 
+        {
+            _engine = new Engine(FEN);
+        }
+
+        public async Task ValidateFEN(string FEN) 
+        {
+            Engine test = new Engine(FEN);
+            if (test.FEN == "8/8/8/8/8/8/8/8 w - - 0 0")             
+                await Clients.Caller.SendAsync("WrongFEN");
+            else {
+                _engine = new Engine(FEN);
+                await Clients.Caller.SendAsync("SetBoardFromFEN",FEN);
+            }
+
         }
 
     }

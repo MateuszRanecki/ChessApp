@@ -56,7 +56,7 @@ namespace Chess_App
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
-                endpoints.MapHub<GameHub>("/GameHub");
+                endpoints.MapHub<IndexHub>("/IndexHub");
                 endpoints.MapHub<ChessMultiHub>("/ChessMultiHub");
                 endpoints.MapHub<HistoryHub>("/HistoryHub");
                 endpoints.MapHub<ComputerHub>("/ComputerHub");

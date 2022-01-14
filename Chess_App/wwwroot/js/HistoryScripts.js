@@ -11,7 +11,8 @@ const elements =
     GameHistory: document.querySelector("#PlaceForGames"),
     ReviewSpace: document.querySelector("#ReviewSpace"),
     PlayButton: document.querySelector("#PlayButton"),
-    Sequence: document.querySelector("#Sequence")
+    Sequence: document.querySelector("#Sequence"),   
+    FenValue: document.querySelector("#fenValue")
 }
 
 connection.start();
@@ -56,7 +57,9 @@ connection.on("CreateEnvForReview", function ()
     div.setAttribute("class", "ReviewButtons");   
     div.append(previous, next);
     elements.ReviewSpace.appendChild(div);
-
+    var FEN = document.getElementById("FEN");
+    FEN.style.visibility = 'visible';
+    elements.FenValue.innerText = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1';
 })
 
 connection.on("ShowSequence", function (sequence)
@@ -78,9 +81,10 @@ function StartAnalyze()
 
 connection.on("UpdateBoard", function (counter)
 {
+    elements.FenValue.innerText = counter;
     playBoard.position(counter);
-    game.fen() = counter;
-    updateStatus();
+    game.fen() = counter;    
+    updateStatus();    
 })
 
 connection.on("OutOfRangeMoves", function (max)
@@ -92,8 +96,8 @@ connection.on("OutOfRangeMoves", function (max)
     {        
         alert("Osiągnięto pozycję startową");
     }
+    
 })
-
 
 
 //Chess Logic

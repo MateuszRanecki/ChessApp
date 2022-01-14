@@ -25,12 +25,12 @@ namespace Chess_App.Controllers
             return View();
         }
 
-        public IActionResult Game() 
+        public IActionResult Multi() 
         {
             return View();
         }
 
-        public IActionResult CheckGame() 
+        public IActionResult History() 
         {
             return View();
         }

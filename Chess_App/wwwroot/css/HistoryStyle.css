@@ -20,6 +20,7 @@
     color: white;
     overflow: auto;
     background-color: gray;
+    border-radius: 5px;
 }
 .GameSpans {
     padding:7px;
@@ -31,4 +32,8 @@
 .PlayDiv {
     padding-left: 48%;
     padding-top: 20px;
+}
+
+#FEN {
+    visibility:hidden;
 }

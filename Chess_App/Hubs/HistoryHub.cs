@@ -117,5 +117,6 @@ namespace Chess_App.Hubs
             }
         }
 
+      
     }
 }

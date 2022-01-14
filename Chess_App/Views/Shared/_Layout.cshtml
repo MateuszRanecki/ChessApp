@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/chessboard-1.0.0.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/css/GameStyle.css">
+    <link rel="stylesheet" href="~/css/IndexStyle.css">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" />
 </head>
 <body>
@@ -15,6 +15,10 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-dark border-bottom box-shadow mb-3 text-white">
             <div class="container">
                 <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">Chess_App</a>
+                <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="History">Historia gier</a>
+                <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="PlayComputer">Partia z komputerem</a>
+                <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="SetPosition">Ustaw pozycję</a>
+                <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Tutorial">Samouczek</a>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
                 </div>
@@ -31,7 +35,7 @@
 
     <footer class="border-top footer text-white bg-dark ">
         <div class="container">
-            &copy; 2021 - Chess_App 
+            &copy; 2022 - Chess_App 
         </div>
     </footer>
 

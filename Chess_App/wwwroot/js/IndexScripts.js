@@ -1,6 +1,6 @@
 ﻿"use strict";
 
-var connection = new signalR.HubConnectionBuilder().withUrl("/GameHub").build();
+var connection = new signalR.HubConnectionBuilder().withUrl("/IndexHub").build();
 
 const elements = {
     PlayersList: document.querySelector("#ActivePlayerslist"),
@@ -80,27 +80,9 @@ connection.on("ShowPlayedGames", function (opponnent)
 })
 
 
-function PlayWithComputer() {
-    window.location.href = '/Home/Playcomputer';
-}
-
-function SendToHistory() {
-    window.location.href = '/Home/CheckGame';
-}
-
-function SendToSetting() {
-    
-    window.location.href = '/home/SetPosition';    
-}
-
-function SendToTutorial() {
-
-    window.location.href = '/home/Tutorial';
-}
-
 connection.on("SendToRoom", function ()
 {
-    window.location.href = '/Home/Game';
+    window.location.href = '/Home/Multi';
 })
 
 
