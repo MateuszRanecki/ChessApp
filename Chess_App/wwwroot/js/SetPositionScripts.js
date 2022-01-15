@@ -4,6 +4,8 @@ connection.start();
 
 //signalr logic
 
+var computerPlays = true;
+
 connection.on("ComputerStarts", function (move) {
     game.move(move);
     playBoard.position(game.fen())
@@ -63,7 +65,7 @@ function PlayPosition()
     updateStatus() 
   
     if (playComputer == "computer") connection.invoke("PlayWithComputer", finalFEN, difficulty, playerColor)
-    else connection.invoke("PlayAlone", finalFEN)
+    else computerPlays = false;
     
    
     gameOptionsElement.remove()
@@ -204,6 +206,7 @@ function onDrop(source, target) {
 
     updateStatus()
 
+    if (computerPlays == true)
     connection.invoke("MakeHumanMove", source, target)
 }
 

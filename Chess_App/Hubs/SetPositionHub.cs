@@ -65,11 +65,6 @@ namespace Chess_App.Hubs
             await Clients.Caller.SendAsync("ComputerStarts", lastMove);
         }
 
-        public async Task PlayAlone(string FEN) 
-        {
-            _engine = new Engine(FEN);
-        }
-
         public async Task ValidateFEN(string FEN) 
         {
             Engine test = new Engine(FEN);
