@@ -33,3 +33,12 @@
     max-width:300px;
     text-align:center;
 }
+#DescPlace {
+    padding-left:30%;
+}
+@media only screen and (max-width: 1200px) {
+
+    #DescPlace {
+        padding-left: 0;
+    }
+}

@@ -1,17 +1,14 @@
 ﻿.setPostion {
     display: flex;
 }
-.left {
-    width:50%;
-    height: 100%;
-    float: left;   
+#PostionBoards {   
+    float: left;
     margin-right: 60px;
 }
 
-.right {
-    width: 75%;
+#SettingsSpace {
+  
     float: left;
-    height: 100%;
 }
 
 .btn {

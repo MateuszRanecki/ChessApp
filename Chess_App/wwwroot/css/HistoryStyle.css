@@ -1,17 +1,18 @@
 ﻿body {
 }
-#left
-{
-    width:50%;
-    height:auto;
-    color:white;
+#HistoryPlace {
+    display: flex;
+    flex-direction: row;
+}
+#HistoryBoard {
+    color: white;
+    max-width: 700px;
 }
 
-#right {
-    width: 50%;
-    height: 100%;
+#GamesHistory {
     color: white;
-    padding-left: 200px;   
+    max-width:300px;
+    padding-left: 50px;
 }
 
 #PlaceForGames {
@@ -36,4 +37,16 @@
 
 #FEN {
     visibility:hidden;
+}
+
+@media only screen and (max-width: 1000px) {
+   #HistoryPlace {
+    flex-direction: column;
+    }
+    #GamesHistory {
+        color: white;
+        max-width: 500px;
+        padding: 0;
+    }
+
 }

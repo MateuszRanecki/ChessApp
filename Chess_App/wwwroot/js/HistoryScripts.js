@@ -60,6 +60,7 @@ connection.on("CreateEnvForReview", function ()
     var FEN = document.getElementById("FEN");
     FEN.style.visibility = 'visible';
     elements.FenValue.innerText = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1';
+    playBoard.resize(300);
 })
 
 connection.on("ShowSequence", function (sequence)

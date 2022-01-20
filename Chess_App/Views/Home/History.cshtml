@@ -7,7 +7,8 @@
 <link rel="stylesheet" href="~/css/chessboard-1.0.0.min.css" />
 <link rel="stylesheet" href="~/css/HistoryStyle.css">
 
-<div id="left">
+<div id="HistoryPlace">
+<div id="HistoryBoard">
     <button class="btn btn-outline-dark bg-dark text-white padding-20px" onclick="FlipBoard()"> Obróć</button>
     <div id="myBoard" style="width: 600px"></div>
     <div id="ReviewSpace"></div>
@@ -23,11 +24,12 @@
    
 </div>
 
-<div id="right">
+<div id="GamesHistory">
     <h3>Rozegrane gry</h3>
     <div id="PlaceForGames"></div>
 </div>
 
+</div>
 
 @section Scripts{
     <script src="~/js/chess.js"></script>
