@@ -4,6 +4,11 @@ connection.start();
 
 //signalr logic
 
+const elements=
+{
+    BoardToPlay: document.querySelector("#BoardToPlay"),
+}
+
 var computerPlays = true;
 
 connection.on("ComputerStarts", function (move) {
@@ -36,8 +41,7 @@ $('#clearBtn').on('click', setBoard.clear)
 var boardValue;
 
 function PlayPosition()
-{   
-    var playingBoardElement = document.getElementById("playBoard")
+{     
     var buttonsElement = document.getElementById("buttons")
     var gameDataElement = document.getElementById("gameData")
     var gameOptionsElement = document.getElementById("gameOptions")
@@ -61,8 +65,7 @@ function PlayPosition()
     var finalFEN = SetFinalPosition(colorChoice, castling, boardValue)  
 
     game = new Chess(finalFEN)   
-    playBoard.position(game.fen())
-    updateStatus() 
+    setPlayingBoard()
   
     if (playComputer == "computer") connection.invoke("PlayWithComputer", finalFEN, difficulty, playerColor)
     else computerPlays = false;
@@ -72,10 +75,21 @@ function PlayPosition()
     buttonsElement.remove()
     setBoard.destroy();
     fenLoaderELement.remove();
-   
-    playingBoardElement.style.visibility = "visible"
     gameDataElement.style.visibility = "visible"    
 
+}
+
+function setPlayingBoard()
+{
+    var boardToCreate = document.createElement('div')
+    boardToCreate.setAttribute('id', 'playBoard')   
+    elements.BoardToPlay.appendChild(boardToCreate)
+    playBoard = Chessboard('playBoard', playConfig)
+    playBoard.position(game.fen())
+    updateStatus()
+    window.addEventListener("resize", function () {
+        playBoard.resize
+    })
 }
 
 function SetFinalPosition(color, castling, board)
@@ -259,7 +273,6 @@ var playConfig = {
     onSnapEnd: onSnapEnd
 }
 
-playBoard = Chessboard('playBoard', playConfig)
-
 updateStatus()
 
+$(window).resize(setBoard.resize)

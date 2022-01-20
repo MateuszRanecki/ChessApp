@@ -16,7 +16,6 @@
 }
 
 #playBoard {
-    visibility: hidden;   
 }
 
 #gameData {
@@ -57,3 +56,14 @@ input {
     background-color: dimgrey;
 }
 
+
+@media only screen and (max-width: 1000px) {
+    .setPostion {
+        flex-direction: column;
+    }
+
+    #SettingsSpace {
+        padding-top:20px;
+    }
+    
+}

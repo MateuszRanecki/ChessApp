@@ -4,7 +4,7 @@
 
 <link href="~/css/SetPositionStyle.css" rel="stylesheet">
 
-<div class="setPostion">
+<div class="row">
 
     <div id="PostionBoards">
         <div id="posBoard"></div>
@@ -13,7 +13,7 @@
             <button class=" btn btn-outline-dark bg-secondary text-white margin-right" onclick="LoadFen()">Załaduj FEN </button>
         </div>
         
-        <div id="playBoard"></div>
+        <div id="BoardToPlay"></div>
     </div>
 
     <div id="SettingsSpace">
@@ -82,6 +82,7 @@
             </div>
 
         </div>
+
         <div id="gameData">
             <label>Status:</label>
             <div id="status"></div>
@@ -90,9 +91,12 @@
             <label>PGN:</label>
             <div id="pgn"></div>
         </div>
+
     </div>
 
 </div>
+
+
 
 @section Scripts {
     <script src="~/js/chess.js"></script>

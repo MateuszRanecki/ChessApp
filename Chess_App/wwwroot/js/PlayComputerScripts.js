@@ -89,6 +89,4 @@ var playConfig = {
 }
 playBoard = Chessboard('myBoard', playConfig)
 
-window.addEventListener('resize', function () {
-    playBoard.resize;
-})
+$(window).resize(playBoard.resize)
