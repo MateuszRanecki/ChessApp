@@ -9,11 +9,11 @@
     height: 75%;
     color:white;
 }
-#right {
+#PlayersToPlay {
     width: 50%;
-    float: right;
-    height: 75%;
-    padding-left:15%;
+    padding-left: 15%;
+    position:absolute;
+    right:5px;
 }
 
 #ActivePlayerslist {

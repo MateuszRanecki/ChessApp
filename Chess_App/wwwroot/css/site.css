@@ -97,3 +97,18 @@ div.card-content {
 div.login-form-icon {
     text-align: center;
 }
+
+@media only screen and (max-width: 1000px) {
+
+    .navbar {
+        font-size:10px;
+    }
+
+    .navbar-brand {
+        font-size: 10px;
+    }
+
+    #logout {
+        font-size: 10px;
+    }
+}
