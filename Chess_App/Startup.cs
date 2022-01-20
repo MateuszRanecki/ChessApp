@@ -9,7 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR;
 using Chess_App.Hubs;
-using ChessEngine.Engine;
+
 
 namespace Chess_App
 {
@@ -28,7 +28,7 @@ namespace Chess_App
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddSignalR();
-            services.AddTransient<Engine>();
+            services.AddTransient<ChessEngine>();
 
         }
 

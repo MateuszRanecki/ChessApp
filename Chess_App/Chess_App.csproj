@@ -26,8 +26,5 @@
     <Folder Include="wwwroot\img\background\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="C:\Users\Mateusz\Downloads\ChessCore-master\ChessCoreEngine\ChessCoreEngine.csproj" />
-  </ItemGroup>
 
 </Project>
