@@ -1,5 +1,4 @@
-﻿using ChessCoreEngine;
-using ChessEngine.Engine;
+﻿
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
 using System;
@@ -12,9 +11,9 @@ namespace Chess_App.Hubs
     [Authorize]
     public class SetPositionHub:Hub
     {
-        private static Engine _engine;
+        private static ChessEngine _engine;
         private byte[] movesToParse = new byte[2];
-        private readonly MoveParser _moveParser = new MoveParser();
+        private readonly PositionMoveParser _moveParser = new PositionMoveParser();
         public override async Task OnConnectedAsync()
         {
             
@@ -22,7 +21,7 @@ namespace Chess_App.Hubs
 
         public async Task PlayWithComputer(string FEN, string difficulty, string playerColor) 
         {
-            _engine = new Engine(FEN);
+            _engine = new ChessEngine(FEN);
 
             if (playerColor == "white")
                 _engine.HumanPlayer = ChessPieceColor.White;
@@ -32,16 +31,16 @@ namespace Chess_App.Hubs
             switch (difficulty) 
             {
                 case "easy":
-                    _engine.GameDifficulty = Engine.Difficulty.Easy;
+                    _engine.GameDifficulty = ChessEngine.Difficulty.Easy;
                     break;
                 case "hard":
-                    _engine.GameDifficulty = Engine.Difficulty.Hard;
+                    _engine.GameDifficulty = ChessEngine.Difficulty.Hard;
                     break;
                 case "veryHard":
-                    _engine.GameDifficulty = Engine.Difficulty.VeryHard;
+                    _engine.GameDifficulty = ChessEngine.Difficulty.VeryHard;
                     break;
                 default:
-                    _engine.GameDifficulty = Engine.Difficulty.Medium;
+                    _engine.GameDifficulty = ChessEngine.Difficulty.Medium;
                     break;
             }
 
@@ -67,11 +66,11 @@ namespace Chess_App.Hubs
 
         public async Task ValidateFEN(string FEN) 
         {
-            Engine test = new Engine(FEN);
+            ChessEngine test = new ChessEngine(FEN);
             if (test.FEN == "8/8/8/8/8/8/8/8 w - - 0 0")             
                 await Clients.Caller.SendAsync("WrongFEN");
             else {
-                _engine = new Engine(FEN);
+                _engine = new ChessEngine(FEN);
                 await Clients.Caller.SendAsync("SetBoardFromFEN",FEN);
             }
 

@@ -1,5 +1,4 @@
-﻿using ChessCoreEngine;
-using ChessEngine.Engine;
+﻿using ChessEngine.Engine;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
 using System;
@@ -11,10 +10,10 @@ namespace Chess_App.Hubs
 {
     [Authorize]
     public class ComputerHub : Hub
-    {
-       private static readonly Engine _engine= new Engine();
+    {      
        private static List<string> _moveList =new List<string>();
-       private readonly MoveParser _moveParser = new MoveParser();      
+       private readonly PositionMoveParser _moveParser = new PositionMoveParser();
+        private static readonly ChessEngine _engine = new ChessEngine();
 
        byte[] movesToParse = new byte[2];
        public string engineMove; 
@@ -42,16 +41,16 @@ namespace Chess_App.Hubs
             switch (diff)
             {
                 case "easy":
-                    _engine.GameDifficulty = Engine.Difficulty.Easy;
+                    _engine.GameDifficulty = ChessEngine.Difficulty.Easy;
                     break;
                 case "hard":
-                    _engine.GameDifficulty = Engine.Difficulty.Hard;
+                    _engine.GameDifficulty = ChessEngine.Difficulty.Hard;
                     break;
                 case "veryHard":
-                    _engine.GameDifficulty = Engine.Difficulty.VeryHard;
+                    _engine.GameDifficulty = ChessEngine.Difficulty.VeryHard;
                     break;
                 default:
-                    _engine.GameDifficulty = Engine.Difficulty.Medium;
+                    _engine.GameDifficulty = ChessEngine.Difficulty.Medium;
                     break;
             }
 

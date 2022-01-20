@@ -51,8 +51,7 @@ namespace Chess_App.Hubs
                 foreach (var item in UserList)
                 {
                     await Clients.Client(Second.Key).SendAsync("ShowLoggedPlayers", item.Value);
-                    await Clients.Caller.SendAsync("ShowLoggedPlayers", item.Value);
-                    
+                    await Clients.Caller.SendAsync("ShowLoggedPlayers", item.Value);                    
                 }                
             }
         }
@@ -89,9 +88,6 @@ namespace Chess_App.Hubs
                 var PlayerOne = UserList.FirstOrDefault();
                 var PlayerTwo = UserList.Where(x => x.Value != PlayerOne.Value).FirstOrDefault();
 
-                //ColorList.Add(PlayerOne.Value, "w");
-                //ColorList.Add(PlayerTwo.Value, "b");
-
                 await Clients.Client(PlayerOne.Key).SendAsync("CanPlayerMove", "w");
                 await Clients.Client(PlayerTwo.Key).SendAsync("CanPlayerMove", "b");
             }
@@ -114,8 +110,7 @@ namespace Chess_App.Hubs
         }
 
 
-        public async Task DrawOfferAccepted()
-        
+        public async Task DrawOfferAccepted()        
         {
             var PlayerOne = UserList.FirstOrDefault();
             var PlayerTwo = UserList.Where(x => x.Value != PlayerOne.Value).FirstOrDefault();
@@ -124,17 +119,7 @@ namespace Chess_App.Hubs
             await Clients.Client(PlayerTwo.Key).SendAsync("ShowDraw");
         }
 
-
-        public async Task SendMessageToAll(string message) 
-        {
-            var caller = Context.User.Identity.Name;
-            foreach (var item in UserList) 
-            {
-                await Clients.Client(item.Key).SendAsync("ReceiveMessageToAll",message,caller);
-            }
-        }
-
-        public async Task SaveFenFromGame(string fen,string moves) 
+        public async Task SaveFenFromGame(string fen, string moves)
         {
             var PlayerOne = Context.User.Identity.Name;
             var PlayerTwo = UserList.Where(x => x.Value != PlayerOne).FirstOrDefault();
@@ -144,13 +129,22 @@ namespace Chess_App.Hubs
                 PlayerID = PlayerOne,
                 Opponnent = PlayerTwo.Value,
                 FEN = fen,
-                GameDate=DateTime.Now,
-                MoveSequence=moves                
+                GameDate = DateTime.Now,
+                MoveSequence = moves
             };
             _context.GameHistory.Add(game);
             _context.SaveChanges();
-         
+
         }
+
+        public async Task SendMessageToAll(string message) 
+        {
+            var caller = Context.User.Identity.Name;
+            foreach (var item in UserList) 
+            {
+                await Clients.Client(item.Key).SendAsync("ReceiveMessageToAll",message,caller);
+            }
+        }       
 
     }
 }

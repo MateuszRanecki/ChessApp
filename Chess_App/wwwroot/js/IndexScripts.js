@@ -33,19 +33,24 @@ connection.on("ShowLoggedPlayers", function (name)
 
 connection.on("ReceiveInvite", function (SenderName)
 {
-    let div = document.createElement('div');
-    let span = document.createElement('span');
-    let button = document.createElement('button');
-    span.setAttribute('class', 'text-white');
-    span.innerText = SenderName + ' Zaprasza do gry';
-    button.innerText = "Zagraj";
-    button.setAttribute('class', 'btn btn-outline-dark bg-dark text-white');
-    button.addEventListener('click', function ()
+    let exists = document.getElementById('InviteFrom' + SenderName);
+    if (exists == null)
     {
-        connection.invoke("RedirectPlayers",SenderName);
-    });
-    div.append(span, button);
-    elements.InvitePlace.appendChild(div);
+        let div = document.createElement('div');
+        let span = document.createElement('span');
+        let button = document.createElement('button');
+        span.setAttribute('class', 'text-white');
+        span.innerText = SenderName + ' Zaprasza do gry';
+        button.innerText = "Zagraj";
+        button.setAttribute('class', 'btn btn-outline-dark bg-dark text-white');
+        button.addEventListener('click', function () {
+            connection.invoke("RedirectPlayers", SenderName);
+        });
+        div.setAttribute('id', 'InviteFrom' + SenderName);
+        div.append(span, button);
+        elements.InvitePlace.appendChild(div);
+    }      
+   
 })
 
 connection.on("DisconnectPlayer", function (name)
