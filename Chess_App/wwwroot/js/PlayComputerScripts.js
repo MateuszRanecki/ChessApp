@@ -4,6 +4,9 @@ var connection = new signalR.HubConnectionBuilder().withUrl("/ComputerHub").buil
 
 connection.start();
 
+const elements= {
+    BoardToPlay: document.querySelector("#Board")
+}
 
 //SignalR logic
 
@@ -26,9 +29,20 @@ function PlayGame()
     if (colorValue == "white") color = "w"
     else color="b"
 
+    showGame()
     document.getElementById("Board").style.display = 'block'
     document.getElementById("ColorPick").style.display = 'none'
     connection.invoke("ComputerStartsGame", diff, colorValue);     
+}
+
+function showGame()
+{
+    var boardToCreate = document.createElement('div')
+    boardToCreate.setAttribute('id', 'myBoard')
+    elements.BoardToPlay.appendChild(boardToCreate)
+    boardToCreate.style.width="500px"
+    console.log(elements.BoardToPlay)
+    playBoard = Chessboard('myBoard', playConfig)
 }
 
 var playBoard = null
@@ -87,6 +101,6 @@ var playConfig = {
     onDrop: onDrop,
     onSnapEnd: onSnapEnd
 }
-playBoard = Chessboard('myBoard', playConfig)
+//playBoard = Chessboard('myBoard', playConfig)
 
-$(window).resize(playBoard.resize)
+/*$(window).resize(playBoard.resize)*/

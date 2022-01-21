@@ -6,7 +6,7 @@
 }
 #HistoryBoard {
     color: white;
-    max-width: 700px;
+    width: 50%;
 }
 
 #GamesHistory {
@@ -17,7 +17,7 @@
 
 #PlaceForGames {
     width: auto;
-    height: 250px;
+    max-height: 500px;
     color: white;
     overflow: auto;
     background-color: gray;

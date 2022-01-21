@@ -8,6 +8,13 @@
 
 #Board {
     display: none;
+    width:100%;
+    height:500px;
+}
+
+#myBoard {
+    width: 80%;
+    height: 500px;
 }
 
 .margin-left {

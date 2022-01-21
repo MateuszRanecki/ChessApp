@@ -193,3 +193,5 @@ var playConfig = {
 playBoard = Chessboard('myBoard', playConfig)
 
 updateStatus()
+
+$(window).resize(playBoard.resize)
