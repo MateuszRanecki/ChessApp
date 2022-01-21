@@ -208,11 +208,13 @@ namespace Chess_App
         {
             nodesSearched++;
 
+            //Warunki remisu
             if (examinedBoard.HalfMoveClock >= 100 || examinedBoard.RepeatedMove >= 3)
                 return 0;
             
             if (depth == 0)
             {
+                //Czy by³ szach?
                 if (!extended && examinedBoard.BlackCheck || examinedBoard.WhiteCheck)
                 {
                     depth++;
@@ -226,8 +228,10 @@ namespace Chess_App
 
             List<Position> positions = EvaluateMoves(examinedBoard, depth);
 
+            // Brak dostêpych ruchów
             if (examinedBoard.WhiteCheck || examinedBoard.BlackCheck || positions.Count == 0)
             {
+                //Czy by³ mat?
                 if (SearchForMate(examinedBoard.WhoseMove, examinedBoard, ref examinedBoard.BlackMate,
                     ref examinedBoard.WhiteMate, ref examinedBoard.StaleMate))
                 {
@@ -245,7 +249,7 @@ namespace Chess_App
 
                         return -32767 - depth;
                     }
-                    
+                    //Pat
                     return 0;
                 }
             }
@@ -259,6 +263,7 @@ namespace Chess_App
                 ChessBoard.MovePiece(helpBoard, move.SourcePosition, move.DestinatedPosition, ChessPieceType.Queen);                
                 ChessPieceValidMoves.GenerateValidMoves(helpBoard);
 
+                //Niepoprawne ruchy
                 if (helpBoard.BlackCheck)
                 {
                     if (examinedBoard.WhoseMove == ChessPieceColor.Black)
@@ -274,9 +279,11 @@ namespace Chess_App
                     }
                 }
 
+                //Rekurencja
                 int value = -AlphaBeta(helpBoard, (byte)(depth - 1), -beta, -alpha,
                     ref nodesSearched, ref nodesQuiessence, ref pvChild, extended);
 
+                //Odciêcie
                 if (value >= beta)
                 {
                     KillerMove[killerIndex, depth].SourcePosition = move.SourcePosition;
@@ -284,6 +291,7 @@ namespace Chess_App
                     killerIndex = ((killerIndex + 1) % 2);                    
                     return beta;
                 }
+                //Znaleziono lepszy ruch
                 if (value > alpha)
                 {
                     Position pvPos = new Position();

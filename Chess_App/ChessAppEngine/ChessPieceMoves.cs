@@ -163,7 +163,7 @@ namespace Chess_App
                 byte x = (byte)(index % 8);
                 byte y = (byte)((index / 8));
                 
-                //zbicie 
+                //Zbicie 
                 if (y < 7 && x < 7)
                 {
                     moveList.Moves.Add((byte)(index + 8 + 1));
@@ -175,11 +175,11 @@ namespace Chess_App
                     MoveArrays.MovesListBlackPawn[index]++;
                 }
                 
-                //ruch do przodu
+                //Ruch do przodu
                 moveList.Moves.Add((byte)(index + 8));
                 MoveArrays.MovesListBlackPawn[index]++;
 
-                //ruch o 2 pola
+                //Ruch o 2 pola
                 if (y == 1)
                 {
                     moveList.Moves.Add((byte)(index + 16));

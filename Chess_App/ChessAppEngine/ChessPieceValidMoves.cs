@@ -99,7 +99,7 @@ namespace Chess_App
                 board.BlackAttackedSquares[destinationSquare] = true;
             }
 
-            //jeœli pole jest puste to mage tam wykonaæ ruch 
+            //Jeœli pole jest puste to mage tam wykonaæ ruch 
             if (board.Squares[destinationSquare].Piece == null)
             {
                 movingPiece.ValidMoves.Push(destinationSquare);
@@ -109,12 +109,12 @@ namespace Chess_App
 
             ChessPiece attackedPiece = board.Squares[destinationSquare].Piece;
 
-            //czy to bierka przeciwnika
+            //Czy to bierka przeciwnika
             if (attackedPiece.PieceColor != movingPiece.PieceColor)
             {
                 attackedPiece.AttackedValue += movingPiece.PieceActionValue;
 
-                //jeœli bierka przeciwnika to król to jest to ruch szachuj¹cy                   
+                //Jeœli bierka przeciwnika to król to jest to ruch szachuj¹cy                   
                 if (attackedPiece.PieceType == ChessPieceType.King)
                 {
                     if (attackedPiece.PieceColor == ChessPieceColor.Black)
@@ -132,7 +132,7 @@ namespace Chess_App
                 }                
                 return false;
             }
-            //jeœli to bierka tego samego koloru to jest to obroñca
+            //Jeœli to bierka tego samego koloru to jest to obroñca
             attackedPiece.DefendedValue += movingPiece.PieceActionValue;
             
             return false;
